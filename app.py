@@ -12,12 +12,20 @@ import random
 import plotly.offline as offline
 offline.init_notebook_mode(connected=True) # Configure Plotly to run offline
 
+##model evaluation:
+from sklearn.metrics import log_loss
+from sklearn.metrics import classification_report
+from sklearn.metrics import make_scorer
+
 # Other packages
 import os
 import warnings
 # Suppress all warnings
 warnings.filterwarnings("ignore")
 import joblib
+
+
+model = joblib.load("models/LR.plk")
 
 def classify(num):
     if num == 0:
