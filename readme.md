@@ -4,11 +4,11 @@
 ## Summary
 | Code      | Name        | Published Article |  Deployed App |
 |-----------|-------------|:-------------:|------:|
-| LP4 Embedding a machine learning model in a GUI|Building a gradio web app for Churn Prediction at Vodafone using logistic regression model.| [Article] | [Deployed App](http://127.0.0.1:7862/) |
+| LP4 Embedding a machine learning model in a GUI|Building Gradio web application using a logistic regression model for Vodafone's Churn Prediction.| [Article] https://medium.com/@otchie.sonny/building-gradio-web-application-using-a-logistic-regression-model-for-vodafones-churn-prediction-2bca313b579f| [Deployed App](https://6850b42ea9b038163e.gradio.live/)|
 |  
 ##  Description
 
-# Building a gradio web app for Churn Prediction at Vodafone.
+# Building Gradio web application using a logistic regression model for Vodafone's Churn Prediction.
 
 This project aims to predict customer churn for Vodafone Group, a telecom company, using logistic regression and create an interactive web application using Gradio. The churn prediction model is built based on customer attributes provided in the dataset.
 
