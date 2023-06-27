@@ -8,7 +8,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns 
-%matplotlib inline
 import random
 import plotly.offline as offline
 offline.init_notebook_mode(connected=True) # Configure Plotly to run offline
@@ -19,6 +18,46 @@ import warnings
 # Suppress all warnings
 warnings.filterwarnings("ignore")
 import joblib
+
+def classify(num):
+    if num == 0:
+        return "Customer will not Churn"
+    else:
+        return "Customer will churn"
+
+
+
+def predict_churn(SeniorCitizen, Partner, Dependents, tenure, InternetService,
+                  OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport,
+                  StreamingTV, StreamingMovies, Contract, PaperlessBilling,
+                  PaymentMethod, MonthlyCharges, TotalCharges):
+    input_data = [
+        SeniorCitizen, Partner, Dependents, tenure, InternetService,
+        OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport,
+        StreamingTV, StreamingMovies, Contract, PaperlessBilling,
+        PaymentMethod, MonthlyCharges, TotalCharges
+    ]
+
+    input_df = pd.DataFrame([input_data], columns=[
+        "SeniorCitizen", "Partner", "Dependents", "tenure", "InternetService",
+        "OnlineSecurity", "OnlineBackup", "DeviceProtection", "TechSupport",
+        "StreamingTV", "StreamingMovies", "Contract", "PaperlessBilling",
+        "PaymentMethod", "MonthlyCharges", "TotalCharges"
+    ])
+
+    pred = classifier.predict(input_df)
+    output = classify(pred[0])
+
+    if output == "Customer will not Churn":
+        return [(0, output)]
+    else:
+        return [(1, output)]
+
+output = gr.outputs.HighlightedText(color_map={
+    "Customer will not Churn": "green",
+    "Customer will churn": "red"
+})
+
 
 iface = gr.Interface(title= "Customer Churn Prediction For Vodafone PLC",
     fn=predict_churn,
