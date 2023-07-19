@@ -4,33 +4,47 @@
 ## Summary
 | Code      | Name        | Published Article |  Deployed App |
 |-----------|-------------|:-------------:|------:|
-| LP4 Embedding a machine learning model in a GUI|Building a gradio web app for Churn Prediction at Vodafone using logistic regression model.| [Article] | [Deployed App](http://127.0.0.1:7862/) |
+| P4 Embedding a machine learning model in a GUI|Building Gradio web application using a logistic regression model for Vodafone's Churn Prediction.| [Article] https://medium.com/@otchie.sonny/building-gradio-web-application-using-a-logistic-regression-model-for-vodafones-churn-prediction-2bca313b579f| [Deployed App](https://6850b42ea9b038163e.gradio.live/)|
 |  
 ##  Description
 
-# Building a gradio web app for Churn Prediction at Vodafone.
+# Building Gradio web application using a logistic regression model for Vodafone's Churn Prediction.
 
 This project aims to predict customer churn for Vodafone Group, a telecom company, using logistic regression and create an interactive web application using Gradio. The churn prediction model is built based on customer attributes provided in the dataset.
 
-# Dataset
+# Understanding the Dataset
 The dataset contains the following columns:
+SeniorCitizen -- Whether a customer is a senior citizen or not
 
-SeniorCitizen
-Partner
-Dependents
-Tenure
-InternetService
-OnlineSecurity
-OnlineBackup
-DeviceProtection
-TechSupport
-StreamingTV
-StreamingMovies
-Contract
-PaperlessBilling
-PaymentMethod
-MonthlyCharges
-TotalCharges
+Partner -- Whether the customer has a partner or not (Yes, No)
+
+Dependents -- Whether the customer has dependents or not (Yes, No)
+
+Tenure -- Number of months the customer has stayed with the company
+
+InternetService -- Customer's internet service provider (DSL, Fiber Optic, No)
+
+OnlineSecurity -- Whether the customer has online security or not (Yes, No, No Internet)
+
+OnlineBackup -- Whether the customer has online backup or not (Yes, No, No Internet)
+
+DeviceProtection -- Whether the customer has device protection or not (Yes, No, No internet service)
+
+TechSupport -- Whether the customer has tech support or not (Yes, No, No internet)
+
+StreamingTV -- Whether the customer has streaming TV or not (Yes, No, No internet service)
+
+StreamingMovies -- Whether the customer has streaming movies or not (Yes, No, No Internet service)
+
+Contract -- The contract term of the customer (Month-to-Month, One year, Two year)
+
+PaperlessBilling -- Whether the customer has paperless billing or not (Yes, No)
+
+Payment Method -- The customer's payment method (Electronic check, mailed check, Bank transfer(automatic), Credit card(automatic))
+
+MonthlyCharges -- The amount charged to the customer monthly
+
+TotalCharges -- The total amount charged to the customer
 
 # Setup
 Make sure you have Python installed on your system.
