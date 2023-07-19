@@ -25,8 +25,8 @@ warnings.filterwarnings("ignore")
 import joblib
 
 block= gr.Blocks(theme= "freddyaboulton/dracula_revamped")
-#model = joblib.load("models/LR.plk")
-model = joblib.load("./Gradio-web-app-for-churn-prediction/models/LR.plk")
+model = joblib.load("models/LR.plk")
+#model = joblib.load("./Gradio-web-app-for-churn-prediction/models/LR.plk")
 
 def classify(num):
     if num == 0:
@@ -63,14 +63,14 @@ def predict_churn(SeniorCitizen, Partner, Dependents, tenure, InternetService,
         return [(1, output)]
 
 
-with block:
-    gr.Markdown(""" # Welcome to My Customer Churn Prediction App""")
-    input=[gr.inputs.Slider(minimum=0, maximum= 1, step=1, label="SeniorCitizen: Select 1 for Yes and 0 for No"),
-        gr.inputs.Radio(["Yes", "No"], label="Partner: Do You Have a Partner?"),
-        gr.inputs.Radio(["Yes", "No"], label="Dependents: Do You Have a Dependent?"),
-        gr.inputs.Number(label="tenure: How Long Have You Been with Vodafone in Months?"),
-        gr.inputs.Radio(["DSL", "Fiber optic", "No"], label="InternetService"),
-......]
+    with block:
+        gr.Markdown(""" # Welcome to My Customer Churn Prediction App""")
+        input=[gr.inputs.Slider(minimum=0, maximum= 1, step=1, label="SeniorCitizen: Select 1 for Yes and 0 for No"),
+            gr.inputs.Radio(["Yes", "No"], label="Partner: Do You Have a Partner?"),
+            gr.inputs.Radio(["Yes", "No"], label="Dependents: Do You Have a Dependent?"),
+            gr.inputs.Number(label="tenure: How Long Have You Been with Vodafone in Months?"),
+            gr.inputs.Radio(["DSL", "Fiber optic", "No"], label="InternetService"),
+    ......]
 
 output = gr.outputs.HighlightedText(color_map={
     "Customer will not Churn": "green",
