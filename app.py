@@ -25,7 +25,8 @@ warnings.filterwarnings("ignore")
 import joblib
 
 
-model = joblib.load("models/LR.plk")
+#model = joblib.load("models/LR.plk")
+model = joblib.load("./Gradio-web-app-for-churn-prediction/models/LR.plk")
 
 def classify(num):
     if num == 0:
