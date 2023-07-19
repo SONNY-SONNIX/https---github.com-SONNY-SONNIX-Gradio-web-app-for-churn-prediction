@@ -24,7 +24,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import joblib
 
-
+block= gr.Blocks(theme= "freddyaboulton/dracula_revamped")
 #model = joblib.load("models/LR.plk")
 model = joblib.load("./Gradio-web-app-for-churn-prediction/models/LR.plk")
 
