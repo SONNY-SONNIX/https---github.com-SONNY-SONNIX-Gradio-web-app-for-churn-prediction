@@ -24,8 +24,9 @@ import warnings
 warnings.filterwarnings("ignore")
 import joblib
 
+path = r"GitHub Space/Gradio-web-app-for-churn-prediction/models/LR.plk"
 block= gr.Blocks(theme= "freddyaboulton/dracula_revamped")
-model = joblib.load("models/LR.plk")
+model = joblib.load(path)
 #model = joblib.load("./Gradio-web-app-for-churn-prediction/models/LR.plk")
 
 def classify(num):
