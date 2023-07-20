@@ -24,9 +24,16 @@ import warnings
 warnings.filterwarnings("ignore")
 import joblib
 
-path = r"GitHub Space/Gradio-web-app-for-churn-prediction/models/LR.plk"
+
+#Z:\GitHub Space\Gradio-web-app-for-churn-prediction\models
+
+absolute_path =os.path.dirname(r"\GitHub Space\Gradio-web-app-for-churn-prediction\models\LR.plk")
+relative_path ="models\LR.plk"
+full_path =os.path.join(absolute_path,relative_path)
+
+#path = r"GitHub Space\Gradio-web-app-for-churn-prediction\models\LR.plk"
 block= gr.Blocks(theme= "freddyaboulton/dracula_revamped")
-model = joblib.load(path)
+model = joblib.load(full_path)
 #model = joblib.load("./Gradio-web-app-for-churn-prediction/models/LR.plk")
 
 def classify(num):
@@ -71,7 +78,7 @@ def predict_churn(SeniorCitizen, Partner, Dependents, tenure, InternetService,
             gr.inputs.Radio(["Yes", "No"], label="Dependents: Do You Have a Dependent?"),
             gr.inputs.Number(label="tenure: How Long Have You Been with Vodafone in Months?"),
             gr.inputs.Radio(["DSL", "Fiber optic", "No"], label="InternetService"),
-    ......]
+    ]
 
 output = gr.outputs.HighlightedText(color_map={
     "Customer will not Churn": "green",
