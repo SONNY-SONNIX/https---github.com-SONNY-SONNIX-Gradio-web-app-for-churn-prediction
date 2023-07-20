@@ -56,6 +56,10 @@ import numpy as np
 # Modeling
 model = joblib.load("models/LR.plk")
 
+##initializing our class weight for each class
+
+
+
 
 #Step 1: Data Splitting
 ##creating our features and label
@@ -76,7 +80,9 @@ num_y_train= LE.fit_transform(y_train) ##fitting and transforming on the train d
 num_y_test= LE.transform(y_test) ##transforming on the test data
 
 # Step 2: Creating Our Attributes
-
+class_weights = compute_class_weight('balanced', classes=[0, 1], y=num_y_train)##initializing our class weight for each class
+weight= dict(zip([0, 1], class_weights))
+weight
 
 ##getting our categorical attributes 
 cat_attr= [i for i in df_drop.drop(["TotalCharges", "MonthlyCharges", "tenure", "Churn"], axis= 1)]
@@ -100,10 +106,6 @@ cat_pipeline= Pipeline([("one_hot", OneHotEncoder())])
 
 col_pipe= ColumnTransformer([("num_pipe", num_pipeline, num_attr),("cat_pipe", cat_pipeline, cat_attr)])
 
-##initializing our class weight for each class
-
-class_weights = compute_class_weight('balanced', classes=[0, 1], y=num_y_train)##initializing our class weight for each class
-weight= dict(zip([0, 1], class_weights))
 
 
 # Logistic Regressor Pipeline
