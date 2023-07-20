@@ -27,13 +27,13 @@ import joblib
 
 #Z:\GitHub Space\Gradio-web-app-for-churn-prediction\models
 
-absolute_path =os.path.dirname(r"\GitHub Space\Gradio-web-app-for-churn-prediction\models\LR.plk")
-relative_path ="models\LR.plk"
+absolute_path =os.path.dirname(r"/GitHub Space/Gradio-web-app-for-churn-prediction/models/LR.plk")
+relative_path ="models/LR.plk"
 full_path =os.path.join(absolute_path,relative_path)
 
 #path = r"GitHub Space\Gradio-web-app-for-churn-prediction\models\LR.plk"
 block= gr.Blocks(theme= "freddyaboulton/dracula_revamped")
-model = joblib.load(full_path)
+model = joblib.load(relative_path)
 #model = joblib.load("./Gradio-web-app-for-churn-prediction/models/LR.plk")
 
 def classify(num):
