@@ -28,6 +28,7 @@ from sklearn.pipeline import make_pipeline
 ##handling imbalance datasets
 from imblearn.over_sampling import SMOTE
 from sklearn.utils.class_weight import compute_class_weight
+from sklearn.utils.class_weight import compute_class_weight
 
 ##hyperparameter tuning
 from sklearn.model_selection import GridSearchCV
@@ -53,10 +54,13 @@ import pandas as pd
 import numpy as np 
 
 # Modeling
+model = joblib.load("models/LR.plk")
+
 
 #Step 1: Data Splitting
 ##creating our features and label
 
+df_drop= pd.read_csv("df_drop.csv")
 X= df_drop.drop("Churn", axis=1)
 y= df_drop.Churn
 
@@ -95,6 +99,12 @@ cat_pipeline= Pipeline([("one_hot", OneHotEncoder())])
 ##we are combining our numeric and categorical pipelines with a Columntransformer
 
 col_pipe= ColumnTransformer([("num_pipe", num_pipeline, num_attr),("cat_pipe", cat_pipeline, cat_attr)])
+
+##initializing our class weight for each class
+
+class_weights = compute_class_weight('balanced', classes=[0, 1], y=num_y_train)##initializing our class weight for each class
+weight= dict(zip([0, 1], class_weights))
+
 
 # Logistic Regressor Pipeline
 
@@ -158,14 +168,14 @@ CW_LRP
 
 ##creating a set of C-values for our hyperparameter to loop over to see which one gives us a lower log loss
 
-np.geomspace(1e-5, 1e5, num=20) 
+#np.geomspace(1e-5, 1e5, num=20) 
 
 ## geomspace generates a set of evenly spaced numbers over a logarithimic scale
 
 ##plotting our np.geomspace(1e-5, 1e5, num=20) to see if it is evenly spaced out 
 
 ##this will help us visualize the spacing logarithmicly
-plt.plot(np.geomspace(1e-5, 1e5, num=20)) 
+#plt.plot(np.geomspace(1e-5, 1e5, num=20)) 
 
 ##this will help us visualize the spacing linearly since the logarithmic method can be difficult
 
@@ -265,10 +275,12 @@ print("Classification report for unTuned LR is\n\n", classification_report(num_y
 
 # Deployment
 
-X_test.to_csv("datahub/LP3/test_telco.csv")
+#X_test.to_csv("datahub/LP3/test_telco.csv")
 HP_LRP
 
 from joblib import dump, load
 dump(HP_LRP, "LR.plk")
 
 classifier = joblib.load('C:\\Users\\otchi\\data_analytics\\virenv\\LR.plk')
+#classifier
+#classifier.predict(X_test)
